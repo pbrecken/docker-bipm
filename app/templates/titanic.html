@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Titanic Dataset</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('hello') }}">Home</a>
+            <a href="{{ url_for('titanic') }}" aria-current="page">Titanic</a>
+            <a href="https://github.com/pbrecken" target="_blank" rel="noopener">About</a>
+        </nav>
+        <h1>Titanic Survival Overview</h1>
+        <p>First rows from the CSV file plus a survival count by sex.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>First 5 Rows</h2>
+            <div class="table-wrap">
+                {{ preview_html|safe }}
+            </div>
+        </section>
+
+        <section>
+            <h2>Survivors by Sex</h2>
+            <div class="bar-chart" aria-label="Bar chart of survived Titanic passengers by sex">
+                {% for row in chart_rows %}
+                <div class="bar-row">
+                    <span class="bar-label">{{ row.label }}</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: {{ row.width }}%"></div>
+                    </div>
+                    <strong>{{ row.value }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by Paula.</p>
+    </footer>
+</body>
+
+</html>
