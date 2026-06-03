@@ -11,11 +11,10 @@ It uses:
 
 ## Run
 
-Create a local `.env` file first:
+Create a local `.env` file from the example:
 
 ```bash
-REDIS_PASSWORD=MyBIPMPassword
-REDIS_HOST=redis
+copy .env.example .env
 ```
 
 Then start the app:
